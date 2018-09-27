@@ -16,10 +16,10 @@ class Game(object):
         self.tps_clock = pygame.time.Clock()
         self.tps_delta = 0.0
 
+
+        self.ball = Ball(self)
         self.player = Player1(self)
         self.playerII = Player2(self)
-        self.ball = Ball(self)
-
         while True:
 
             # Handle events
@@ -44,7 +44,7 @@ class Game(object):
     def tick(self):
         self.player.tick()
         self.playerII.tick()
-        self.ball.tick()
+        self.ball.tick(self.player, self.playerII)
 
     def draw(self):
         self.player.draw()
